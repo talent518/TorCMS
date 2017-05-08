@@ -1,8 +1,6 @@
 {% extends "../../theme/bage.html" %}
 
 
-
-
 {% block mainbody %}
 
 
@@ -19,14 +17,14 @@
     <ul class="list-group">
         {% for rec in recs_collect %}
         <li class="list-group-item">
-            <a href="/info/{{ rec.app.uid }}">
-                {{ rec.app.title }}
+            <a href="/info/{{ rec.post_uid }}">
+                {{ rec.post_title }}
             </a>
 
-            <span class="app_tag">{% module app_tags(rec.app.uid) %}</span>
+            <span class="app_tag">{% module app_tags(rec.post_uid) %}</span>
             {% if 1== 2 %}
                   <span style="font-size: small; color: #5e5e5e">
-                        ({{ rec.app.view_count }})
+                        ({{ rec.post_view_count }})
                         </span>
             {% end %}
         </li>
