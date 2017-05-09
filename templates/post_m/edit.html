@@ -47,7 +47,7 @@
                     <label for="tags" class="col-sm-2 control-label">标签</label>
                     <div class="col-sm-10">
                         <input type="text" id="tags" name="tags" class="form-control" value="{% for x in app2label_info %}
-                {{ x.tag.name}},
+                {{ x.tag_name}},
                 {% end  %}">
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                             {% if taginfo.uid.endswith('00') %}
                             <option value="{{ taginfo.uid }}"
                                     {% for tt in app2tag_info %}
-                                    {% if tt.order== ii and tt.tag.uid.startswith(taginfo.uid[:2]) %}
+                                    {% if tt.order== ii and tt.tag_id.startswith(taginfo.uid[:2]) %}
                                     selected
                                     {% end %}
                                     {% end %} >{{ taginfo.name }}
@@ -132,8 +132,8 @@
                             {% set pcatid = 'xx' %}
                             {% for taginfo in tag_infos %}
                                 {% for tt in app2tag_info %}
-                                    {% if tt.order== ii and tt.tag.uid == taginfo.uid %}
-                                        {% set pcatid = tt.tag.uid[:2] %}
+                                    {% if tt.order== ii and tt.tag_id == taginfo.uid %}
+                                        {% set pcatid = tt.tag_id[:2] %}
                                     {% end %}
                                 {% end %}
                             {% end %}
@@ -145,7 +145,7 @@
                             {% if not taginfo.uid.endswith('00') %}
                             <option value="{{ taginfo.uid }}"
                                     {% for tt in app2tag_info %}
-                                    {% if tt.order== ii and tt.tag.uid== taginfo.uid %}
+                                    {% if tt.order== ii and tt.tag_id== taginfo.uid %}
                                     selected
                                     {% end %}
                                     {% end %}  >{{ taginfo.name }}
