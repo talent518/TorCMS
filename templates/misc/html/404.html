@@ -17,6 +17,10 @@
             <h3>详细信息</h3>
             {% if kwd is not None %}
             <div> {% raw kwd['info'] %}</div>
+             {% if 'link' in kwd %}
+            <p><a href="{{ kwd['link'] }}" class="btn btn-info btn-xs">返回上一步操作。</a> </p>
+
+        {% end %}
             {% end %}
         </div>
     </div>
