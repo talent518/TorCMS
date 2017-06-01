@@ -17,7 +17,7 @@
                     Most attention
                 </div>
                 <ul class="list-group" id="mostall">
-                    {% module post_most_view(10, with_date = False, with_catalog= False) %}
+                    {% module post_most_view(5, with_date = False, with_catalog= False) %}
                 </ul>
             </div>
             <div class="panel panel-default">
@@ -25,7 +25,7 @@
                     Recent articles
                 </div>
                 <ul class="list-group">
-                    {% module post_recent(10, with_date = False, with_catalog= False) %}
+                    {% module post_recent(5, with_date = False, with_catalog= False) %}
                 </ul>
             </div>
         </div>
@@ -35,9 +35,9 @@
                 <h3 class="panel-title"> Classified catalogue</h3>
             </div>
 
-
+       <ul class="list-group list-font">
                 {% module category_menu() %}
-
+</ul>
 
         </div>
     </div>

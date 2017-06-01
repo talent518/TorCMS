@@ -76,73 +76,87 @@
 <title>沼泽湿地数据共享节点</title>
 <meta name="keywords" content="沼泽湿地,湿地数据,湿地科学,科学数据,科学数据共享节点">
 <meta name="description" content="沼泽湿地数据共享节点">
-<style type="text/css">
-    #map {
-        width: 100%;
-        height: 200px;
-        border: 1px solid black;
+<style>
+    <!--
+    li {
+        list-style: none
     }
-</style>
 
+    #demo {
+        overflow: hidden;
+        width: 100%;
+    }
+
+    #demo img {
+        border: 3px solid #ddd;
+        margin: 5px 2px
+    }
+
+    #indemo {
+        float: left;
+        width: 800%;
+    }
+
+    #demo1 {
+        float: left;
+    }
+
+    #demo2 {
+        float: left;
+    }
+
+    -->
+</style>
 {% end %}
 
 {% block zhuti %}
 
 
-<div id="map"></div>
+<div class="row">
+    <div id="map"></div>
 
-
-<bR>
+</div>
+ <br>
 
 
 <div class="row">
+
+
     <div class="col-sm-8">
 
 
-        <div class="row">
-
-
-            <div class="col-sm-6">
-                <div class="panel panel-primary">
-                    {% module app_catalog_of('8100') %}
-                </div>
-                <div class="panel panel-primary">
-                    {% module app_catalog_of('8300') %}
-
-                </div>
+        <div class="col-sm-6">
+            <div class="panel panel-primary">
+                {% module app_catalog_of('8100') %}
             </div>
-            <div class="col-sm-6">
-                <div class="panel panel-primary">
-                    {% module app_catalog_of('8200') %}
-                </div>
-                <div class="panel panel-primary">
-                    {% module app_catalog_of('8400') %}
+            <div class="panel panel-primary">
+                {% module app_catalog_of('8300') %}
 
-                </div>
             </div>
+            <div class="panel panel-primary">
+                {% module app_catalog_of('8500') %}
+            </div>
+            <div class="panel panel-primary">
+                {% module app_catalog_of('8700') %}
+            </div>
+
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-
-                <div class="panel panel-primary">
-                    {% module app_catalog_of('8500') %}
-                </div>
-                <div class="panel panel-primary">
-                    {% module app_catalog_of('8700') %}
-                </div>
-                <div class="panel panel-primary">
-                    {% module app_catalog_of('8600') %}
-                </div>
+        <div class="col-sm-6">
+            <div class="panel panel-primary">
+                {% module app_catalog_of('8200') %}
             </div>
+            <div class="panel panel-primary">
+                {% module app_catalog_of('8400') %}
 
-
-            <div class="col-sm-6">
-                <div class="panel panel-primary">
-                    {% module app_catalog_of('8800') %}
-                </div>
-                <div class="panel panel-primary">
-                    {% module app_catalog_of('8900') %}
-                </div>
+            </div>
+            <div class="panel panel-primary">
+                {% module app_catalog_of('8800') %}
+            </div>
+            <div class="panel panel-primary">
+                {% module app_catalog_of('8900') %}
+            </div>
+            <div class="panel panel-primary">
+                {% module app_catalog_of('8600') %}
             </div>
         </div>
 
@@ -150,128 +164,145 @@
     </div>
 
     <div class="col-sm-4">
-        <div class="col-sm-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <span class="glyphicon glyphicon-list-alt"></span>
-                    News
-                </div>
 
-                    {% module post_recent(3, with_catalog = False) %}
-                    {% module post_cat_recent('0100', label = 'China', num=10, with_catalog = False) %}
-
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-list-alt"></span>
+                News
             </div>
-        </div>
-        <div class="col-sm-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <span class="glyphicon glyphicon-list-alt"></span>
-                    Online maps and tools
-                </div>
-                <ul class="list-group">
 
-                    <li class="list-group-item"><a href="http://www.osgeo.cn/map/m0001">中国自然保护区_在线地图</a></li>
-                    <li class="list-group-item"><a href="http://www.osgeo.cn/map/m0081">国家级自然保护区分布图_在线地图</a></li>
-                    <li class="list-group-item"><a href="http://www.osgeo.cn/map/m01fd">中国自然保护区的数量与结构地图</a></li>
-                    <li class="list-group-item"><a href="http://www.osgeo.cn/app/s3202">1比2.5万新旧地形图分幅编号在线转换</a></li>
-                    <li class="list-group-item"><a href="http://www.osgeo.cn/app/s3206">1比5万新旧地形图分幅编号在线转换</a></li>
-                    <li class="list-group-item"><a href="http://www.osgeo.cn/app/s3202">1比25万新旧地形图分幅编号在线转换</a></li>
-                    <li class="list-group-item"><a href="http://www.osgeo.cn/app/s3200">1比50万新旧地形图分幅编号在线转换</a></li>
-                </ul>
+            {% module post_recent(3, with_catalog = False) %}
+            {% module post_cat_recent('0100', label = 'China', num=10, with_catalog = False) %}
 
-            </div>
         </div>
 
-        <div class="col-sm-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a href="/page/cmi.html" class="move">
-                        Survey project of wetland resources in China
-                    </a>
-                </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-list-alt"></span>
+                Online maps and tools
+            </div>
+            <ul class="list-group">
+
+                <li class="list-group-item"><a href="http://www.osgeo.cn/map/m0001">中国自然保护区_在线地图</a></li>
+                <li class="list-group-item"><a href="http://www.osgeo.cn/map/m0081">国家级自然保护区分布图_在线地图</a></li>
+                <li class="list-group-item"><a href="http://www.osgeo.cn/map/m01fd">中国自然保护区的数量与结构地图</a></li>
+                <li class="list-group-item"><a href="http://www.osgeo.cn/app/s3202">1比2.5万新旧地形图分幅编号在线转换</a></li>
+                <li class="list-group-item"><a href="http://www.osgeo.cn/app/s3206">1比5万新旧地形图分幅编号在线转换</a></li>
+                <li class="list-group-item"><a href="http://www.osgeo.cn/app/s3202">1比25万新旧地形图分幅编号在线转换</a></li>
+                <li class="list-group-item"><a href="http://www.osgeo.cn/app/s3200">1比50万新旧地形图分幅编号在线转换</a></li>
+            </ul>
+
+        </div>
 
 
-                <div class="panel-body">
-                    Chinese marsh wetland resources investigation will be on the basis of the existing work, marsh
-                    wetland
-                    classification and further establish a scientific survey specification, break administrative
-                    division
-                    limit,
-                    from hydrothermal differentiation and natural geographical units as partition principle, focusing on
-                    the
-                    investigation of water peat and germplasm resources, will make up for the weak link in the past
-                    project
-
-                </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a href="/page/cmi.html" class="move">
+                    Survey project of wetland resources in China
+                </a>
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a href="/page/sub.html" class="move"> Subject Data Bases</a>
-                </div>
 
-
-                <div class="panel-body">
-                    Chinese marsh wetland resources investigation will be on the basis of the existing work, marsh
-                    wetland
-                    classification and further establish a scientificChinese marsh wetland resources investigation will
-                    be
-                    on the basis of the existing work
-
-                </div>
-
+            <div class="panel-body">
+                Chinese marsh wetland resources investigation will be on the basis of the existing work, marsh
+                wetland
+                classification and further establish a scientific survey specification, break administrative
+                division
+                limit,
+                from hydrothermal differentiation and natural geographical units as partition principle, focusing on
+                the
+                investigation of water peat and germplasm resources, will make up for the weak link in the past
+                project
 
             </div>
         </div>
 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a href="/page/sub.html" class="move"> Subject Data Bases</a>
+            </div>
 
+
+            <div class="panel-body">
+                Chinese marsh wetland resources investigation will be on the basis of the existing work, marsh
+                wetland
+                classification and further establish a scientificChinese marsh wetland resources investigation will
+                be
+                on the basis of the existing work
+
+            </div>
+
+
+        </div>
     </div>
+
 
 </div>
 
- <div class="panel panel-default">
-                <div class="panel-heading">
-                   <a href="post/recent">Picture</a>
-                </div>
+
+<div class="row">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="post/recent">Picture</a>
+        </div>
 
 
-<div class="panel-body">
-    <div class="indexGoods">
-
-                <div class="scrollBox">
-                    <div class="goodsImage" style="width: 100%; overflow: hidden">
-                        <ul class="list">
-                            {% for x in view %}
-                            <li style="float: left; width: 162px; margin-right: 10px ">
-                                <a href="/post/{{ x.uid }}" title="{{ x.title }}">
-                                    <img src="{{ x.logo }}" width="162"
-                                         height="120"
-                                         alt="{{ x.title }}" style="border: 1px solid #ddd">
-                                    <span>{{ str(x.title)[:21]}}...</span>
-                                </a>
-                            </li>
-                            {% end %}
+        <div class="panel-body">
 
 
-                        </ul>
+            <div id="demo">
+                <div id="indemo">
+                    <div id="demo1">
+
+
+                        {% for x in view %}
+                        {% if len(x.logo) >= 46 %}
+
+                        <a href="/post/{{ x.uid }}" title="{{ x.title }}">
+                            <img src="{{ x.logo }}" width="162"
+                                 height="120"
+                                 alt="{{ x.title }}" style="border: 1px solid #ddd">
+
+                        </a>
+
+                        {% end %}
+                        {% end %}
+
+
                     </div>
+                    <div id="demo2"></div>
                 </div>
             </div>
+            <script>
+
+                var speed = 50; //数字越大速度越慢
+                var tab = document.getElementById("demo");
+                var tab1 = document.getElementById("demo1");
+                var tab2 = document.getElementById("demo2");
+                tab2.innerHTML = tab1.innerHTML;
+                function Marquee() {
+                    if (tab2.offsetWidth - tab.scrollLeft <= 0)
+                        tab.scrollLeft -= tab1.offsetWidth
+                    else {
+                        tab.scrollLeft++;
+                    }
+                }
+                var MyMar = setInterval(Marquee, speed);
+                tab.onmouseover = function () {
+                    clearInterval(MyMar)
+                };
+                tab.onmouseout = function () {
+                    MyMar = setInterval(Marquee, speed)
+                };
+
+            </script>
+
+
         </div>
     </div>
-
-<div style="clear: both;"></div>
-
-<script type="text/javascript">
-    jQuery(".indexGoods").slide({
-        mainCell: "ul",
-        effect: "leftMarquee",
-        vis: 7,
-        autoPlay: true,
-        interTime: 50,
-        switchLoad: "_src"
-    });
-</script>
+</div>
 
 
 {% end %}
