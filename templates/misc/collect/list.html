@@ -30,22 +30,15 @@
         </li>
         {% end %}
     </ul>
-    <div class="panel-footer">
-        <div class="row">
-            <div class="col-md-6">
-                Article link： <a href="/collect/list" style="color:#006699">My collection</a>
-            </div>
 
-
-            <div class="col-md-6" style="text-align: right;">
-                <div class="widget_baidu_share">{% module baidu_share() %}</div>
-            </div>
-
-
-        </div>
-    </div>
 </div>
+ <div class="col-sm-12">
+ <div class="row">
 
+        {% module collect_pager( userinfo.uid, kwd['current_page'] ) %}
+
+</div>
+</div>
 {% end %}
 
 

@@ -1,66 +1,54 @@
-{% extends "../theme/tmpldoc.html" %}
+{% extends "../theme/bage.html" %}
 
 
-{% block head %}
-
-<title>OSGeo中国中心 | 开放地理空间实验室</title>
-<meta name="keywords" content="GIS,地理信息系统,开源GIS,OSGeo,OpenLayers,MapServer,GDAL,GIS教程,WebGIS">
-<meta name="description" content="OSGeo中国中心实验室，关注开源GIS，开放数据">
-
-<script type="text/javascript">
-    $().ready(function () {
-
-        $("#find_calc").validate(
-                {
-                    rules: {
-                        keyword: {
-                            required: true
-                        }
-                    },
-                    messages: {
-                        keyword: {
-                            required: "<span class='red'>请输入要查询的关键词</span>"
-                        }
-                    }
-                }
-        );
-    });
-
-</script>
-
-{% end %}
 
 
-{% block content %}
-<ol class="breadcrumb">
-    <li>当前位置: <a href="{% module site_url() %}">首页</a></li>
-    <li><a href="/user/info"> User</a></li>
-    <li> 查找用户</li>
-</ol>
-<div class="panel panel-primary">
-    <div class="panel-heading">查找用户
-    </div>
+{% block typebody %}
+
+
+<div class="mtop">
+
+    <ul class="breadcrumb">
+        <li><a href="/">{{ _('Home') }}</a></li>
+
+        <li class="active">{{ _('Find User') }}</li>
+    </ul>
+
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading"><b>{{ _('Find User') }} </b></div>
     <div class="panel-body">
+        <form method="post" id="find_calc" action="/user/find" class="form-horizontal">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="keyword">{{ _('User Name') }}</label>
+
+                <div class="col-sm-10">
 
 
-        <form class="pure-form pure-form-aligned" method="post" id="find_calc" action="/user/find">
-
-            <div class="pure-control-group">
-                <label for="keyword">输入用户名</label>
-                <input id="keyword" type="text" name="keyword" placeholder="用户名">
+                    <input id="keyword" type="text" name="keyword" placeholder="User Name">
+                </div>
             </div>
-            <div class="pure-control-group">
-                <label for="d"></label>
-                <button type="submit" id="d" name="d" class="pure-button pure-button-primary">查找</button>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="d">{{ _('User Name') }}</label>
+
+                <div class="col-sm-10">
+
+
+                    <input id="d" name="d" type="submit" class="btn btn-primary"
+                           value="{{ _('Find') }}"/>
+                </div>
             </div>
 
 
         </form>
-
     </div>
 
 
 </div>
+
 
 
 {% end %}

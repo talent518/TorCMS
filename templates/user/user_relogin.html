@@ -1,31 +1,39 @@
-{% extends "../theme/tmpldoc.html" %}
+{% extends "../theme/bage.html" %}
 
-{% block content %}
 
-<ol class="breadcrumb">
-    <li>当前位置: <a href="{% module site_url() %}">首页</a></li>
-      <li><a  href="/user/info"> User</a> </li>
-    <li> 密码出错</li>
-</ol>
-<div class="panel panel-primary">
 
-    <div class="panel-heading">
-        密码出错
-    </div>
+
+{% block typebody %}
+
+    <div class="mtop">
+
+    <ul class="breadcrumb">
+        <li><a href="/">{{ _('Home') }}</a></li>
+
+        <li class="active">{{ _('Password Error') }}</li>
+    </ul>
+
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading"><b> {{ _('Password Error') }} </b></div>
+
     <div class="panel-body">
 
 
-        <div class="alert alert-danger">密码验证出错!</div>
+        <div class="alert alert-danger">Password authentication error!</div>
         <Br>
 
         <div  style="text-align: center;">
-        <a href="/user/login" class="btn btn-warning " style="text-align: center;">重新登陆</a>
+        <a href="/user/login" class="btn btn-warning " style="text-align: center;">Reenter</a>
 </div>
 
     </div>
 
 
 </div>
+
 
 
 {% end %}

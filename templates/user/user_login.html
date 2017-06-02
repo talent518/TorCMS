@@ -1,15 +1,8 @@
-{% extends "../theme/tmpldoc.html" %}
-
-{% block head %}
+{% extends "../theme/bage.html" %}
 
 
-<title>OSGeo中国中心 | 开放地理空间实验室</title>
-<meta name="keywords" content="GIS,地理信息系统,开源GIS,OSGeo,OpenLayers,MapServer,GDAL,GIS教程,WebGIS">
-<meta name="description" content="OSGeo中国中心实验室，关注开源GIS，开放数据">
-{% end %}
+{% block typebody %}
 
-
-{% block content %}
 
 <script type="text/javascript">
     $().ready(function () {
@@ -25,46 +18,50 @@
                     },
                     messages: {
                         user_name: {
-                            required: "<span class='red'>请输入用户名</span>"
+                            required: "<span class='red'>enter one user name</span>"
                         },
 
                         user_pass: {
-                            required: "<span class='red'>请输入密码</span>"
+                            required: "<span class='red'>Please enter a password</span>"
                         }
                     }
                 }
         );
     });
 </script>
-<ol class="breadcrumb">
-    <li>当前位置: <a href="{% module site_url() %}">首页</a></li>
-      <li><a  href="/user/info"> User</a> </li>
-    <li> 用户登录</li>
-</ol>
-<div class="panel panel-primary">
+<div class="mtop">
 
-    <div class="panel-heading">
-        用户登录
-    </div>
+    <ul class="breadcrumb">
+        <li><a href="/">{{ _('Home') }}</a></li>
+
+        <li class="active">{{ _('User Login') }}</li>
+    </ul>
+
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading"><b> {{ _('User Login') }} </b></div>
     <div class="panel-body">
 
-
-        <form id="form_login"  method="post" class="form-horizontal" role="form">
+        <form id="form_login" action="/user/login" method="post" class="form-horizontal" role="form">
 
 
             <div class="form-group">
-                <label for="user_name" class="col-sm-2 control-label">用户名: </label>
+                <label for="user_name" class="col-sm-2 control-label">{{ _('User name') }}: </label>
 
                 <div class="col-sm-10">
-                    <input type="text" name="user_name" id="user_name" class="form-control" placeholder="请输入你的用户名"/>
+                    <input type="text" name="user_name" id="user_name" class="form-control"
+                           placeholder="Please enter your user name"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="user_pass" class="col-sm-2 control-label">密码: </label>
+                <label for="user_pass" class="col-sm-2 control-label">{{ _('Password') }}: </label>
 
                 <div class="col-sm-10">
-                    <input type="password" name="user_pass" id="user_pass" class="form-control" placeholder="请输入你的密码">
+                    <input type="password" name="user_pass" id="user_pass" class="form-control"
+                           placeholder="Please enter your password">
 
 
                 </div>
@@ -74,21 +71,29 @@
                 <label class="col-sm-2 control-label"></label>
 
                 <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">登陆</button>
+                    <button type="submit" class="btn btn-primary">{{ _('Login') }}</button>
                 </div>
             </div>
 
 
         </form>
 
+        <br>
 
+        <div class="alert alert-info">Non users of the station？ Please
+            <a href="/user/regist" class="btn btn-primary">Register</a> 。
+        </div>
+
+
+        <div class="alert alert-warning">Forget Password，Try to <a href="/user/reset-password"
+                                                                   class="btn btn-primary"> reset the
+            password</a></div>
     </div>
-    <div class="panel-footer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;非本站用户？ 请 <a href="/user/regist"
-                                                                        class="btn btn-primary">进行注册</a> 。
-    </div>
-     <div class="alert alert-warning">忘记密码，<a href="/user/reset-password">找回密码.</a></div>
+
 
 </div>
+
+
 
 {% end %}
 

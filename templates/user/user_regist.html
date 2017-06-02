@@ -1,178 +1,109 @@
-{% extends "../theme/tmpldoc.html" %}
+{% extends "../theme/bage.html" %}
 
-{% block head %}
+{% block typebody %}
 
+<script type="text/javascript">
+    $().ready(function () {
+        $("#form_regist").validate(
+                {
+                    rules: {
+                        user_name: {
+                            required: true,
+                            rangelength: [5, 16]
+                        },
+                        user_pass: {
+                            required: true,
+                            rangelength: [6, 20]
+                        },
+                        user_pass2: {
+                            required: true,
+                            equalTo: "#user_pass"
+                        },
+                        user_email: {
+                            required: true,
+                            email: true
+                        }
+                    },
+                    messages: {
+                        user_name: {
+                            required: "<span class='red'>Please enter your user name</span>",
+                            rangelength: "<span class='red'>The user name for at least five, up to 16</span>"
+                        },
 
-<title>OSGeo中国中心 | 开放地理空间实验室</title>
-<meta name="keywords" content="GIS,地理信息系统,开源GIS,OSGeo,OpenLayers,MapServer,GDAL,GIS教程,WebGIS">
-<meta name="description" content="OSGeo中国中心实验室，关注开源GIS，开放数据">
-
-<script>
-    function change_pass() {
-
-        var user_pass = $("#user_pass").val();
-        var user_name = $("#user_name").val();
-        var user_email = $("#user_email").val();
-
-        // 提交修改密码的动作
-
-        // 模拟Form提交
-        $.ajax({
-            type: "POST",
-            url: "/user/j_regist",
-            data: {user_name: user_name, user_pass: user_pass, user_email: user_email},
-
-            success: function (msg) {
-                json_res = $.parseJSON(msg);
-                if (json_res['success'] == true) {
-                    $("#errorinfo").html('注册成功');
-                    location.href = '/user/info';
-                }
-                else {
-                    if (json_res['code'] == '11') {
-                        $("#errorinfo").html('用户名无效');
-                    }
-                    else if (json_res['code'] == '12') {
-                        $("#errorinfo").html('用户名已存在');
-                    }
-
-                    else if (json_res['code'] == '21') {
-                        $("#errorinfo").html('Email无效');
-                    }
-
-                    else if (json_res['code'] == '22') {
-                        $("#errorinfo").html('Email已存在');
-                    }
-                    else {
-                        $("#errorinfo").html('Error2');
+                        user_pass: {
+                            required: "<span class='red'>Please enter the password</span>",
+                            rangelength: "<span class='red'>Password for at least six, up to 20 </span>"
+                        },
+                        user_pass2: {
+                            required: "<span class='red'>Please enter the password</span>",
+                            equalTo: "<span class='red'>Enter the password twice</span>"
+                        },
+                        user_email: {
+                            required: "<span class='red'>Please enter a correct E-mail </span>",
+                            email: "<span class='red'>Please enter a correct E-mail</span>"
+                        }
                     }
                 }
-                // location.href = '/user/info';
-            },
-            error: function () {
-                alert('未知错误');
-            }
-        })
-    }
+        );
+    });
 </script>
 
-{% end %}
+<div class="mtop">
 
+    <ul class="breadcrumb">
+        <li><a href="/">{{ _('Home') }}</a></li>
 
-{% block content %}
-<ol class="breadcrumb">
-    <li>当前位置: <a href="{% module site_url() %}">首页</a></li>
-      <li><a  href="/user/info"> User</a> </li>
-    <li> 用户注册</li>
-</ol>
-<div class="panel panel-primary">
+        <li class="active">{{ _('Regist') }}</li>
+    </ul>
+</div>
 
-    <div class="panel-heading">
-        用户注册
-    </div>
+<div class="panel panel-default">
+    <div class="panel-heading"><b>{{ _('Regist') }} </b></div>
     <div class="panel-body">
-
-
-        <script type="text/javascript">
-            $().ready(function () {
-                $("#form_regist").validate(
-                        {
-                            rules: {
-                                user_name: {
-                                    required: true,
-                                    rangelength: [5, 16]
-                                },
-                                user_pass: {
-                                    required: true,
-                                    rangelength: [6, 20]
-                                },
-                                user_pass2: {
-                                    required: true,
-                                    equalTo: "#user_pass"
-                                },
-                                user_email: {
-                                    required: true,
-                                    email: true
-                                }
-                            },
-                            messages: {
-                                user_name: {
-                                    required: "<span class='red'>请输入用户名</span>",
-                                    rangelength: "<span class='red'>用户名最少为5位，最长为16位</span>"
-                                },
-
-                                user_pass: {
-                                    required: "<span class='red'>请输入密码</span>",
-                                    rangelength: "<span class='red'>密码最少为6位，最长为20位</span>"
-                                },
-                                user_pass2: {
-                                    required: "<span class='red'>请输入密码</span>",
-                                    equalTo: "<span class='red'>两次输入密码不一致</span>"
-                                },
-                                user_email: {
-                                    required: "<span class='red'>请输入正确电子邮箱</span>",
-                                    email: "<span class='red'>请输入正确的电子邮箱</span>"
-                                }
-                            }
-                        }
-                );
-            });
-        </script>
-
-
-        <form id="form_regist" class="form-horizontal"  >
+        <form id="form_regist" action="/user/regist" method="post" class="form-horizontal" role="form">
             <fieldset>
+
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="user_name">用户名： </label>
+                    <label class="col-sm-2 control-label" for="user_name">{{ _('User name') }}： </label>
 
                     <div class="col-sm-10">
-                        <input class="form-control" id='user_name' type="text" name="user_name">
+                        <input class="form-control" id='user_name' type="text" name="user_name" placeholder="User name must be alphabetic or alphanumeric combination (letter). ">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="user_pass">密码：</label>
+                    <label class="col-sm-2 control-label" for="user_pass">{{ _('Password') }}：</label>
 
                     <div class="col-sm-10">
-                        <input class="form-control" id="user_pass" type="password" name="user_pass">
+                        <input class="form-control" id="user_pass" type="password" name="user_pass" placeholder="Password at least 6, the longest 20. ">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="user_pass2">确认密码：</label>
+                    <label class="col-sm-2 control-label" for="user_pass2">{{ _('Confirm password') }}：</label>
 
                     <div class="col-sm-10">
-                        <input class="form-control" id="user_pass2" type="password" name="user_pass2">
+                        <input class="form-control" id="user_pass2" type="password" name="user_pass2" placeholder="Please confirm and password input. ">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="user_email">电子邮箱：</label>
+                    <label class="col-sm-2 control-label" for="user_email">{{ _('Email') }} ：</label>
 
                     <div class="col-sm-10">
-                        <input class="form-control" id="user_email" type="text" name="user_email">
+                        <input class="form-control" id="user_email" type="text" name="user_email" placeholder="Please enter a correct E-mail.">
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="sub1"></label>
                     <div class="col-sm-10">
-                        <a onclick="change_pass();" class="btn btn-default btn-md ">提交</a>
+                        <button id="sub1" type="submit" class="btn btn-primary">{{ _('Submit') }}</button>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="errorinfo"></label>
-                    <div class="col-sm-10">
-                        <label id="errorinfo" name="errorinfo"></label>
-                    </div>
-                </div>
-
             </fieldset>
         </form>
-
-
     </div>
 
 
 </div>
+
 
 
 {% end %}
