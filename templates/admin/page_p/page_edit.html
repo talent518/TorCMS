@@ -1,4 +1,6 @@
-{% extends "../../theme/base_edit.html" %}
+{% extends "../../theme/bage.html" %}
+
+
 
 {% block head %}
 <link href="{{ static_url('markdown/css/bootstrap-markdown.min.css') }}" rel="stylesheet" type="text/css"/>
@@ -16,7 +18,10 @@
 </script>
 
 {% end %}
-{% block edit %}
+{% block typebody %}
+<div class="container">
+    <div style="padding-top:80px;">
+    </div>
 
 <div class="mtop">
 
@@ -77,6 +82,7 @@
 
         </div>
     </div>
+</div>
 </div>
 
 
