@@ -25,11 +25,16 @@
 
 
 {% block zhuti %}
-<div class="panel panel-default">
+<ol class="breadcrumb">
+    <li>当前位置: <a href="{% module site_url() %}">首页</a></li>
+      <li><a  href="/user/info"> User</a> </li>
+    <li> 新密码</li>
+</ol>
+<div class="panel panel-primary">
 
 
     <div class="panel-heading">
-        所在位置： <a href="/">云算笔记</a> > 新密码
+        新密码
 
     </div>
 </div>

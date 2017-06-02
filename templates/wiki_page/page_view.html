@@ -5,13 +5,18 @@
     <li>Current location: <a href="{% module site_url() %}">Home</a></li>
     <li class="active">{{ view.title }}</li>
 </ol>
-<div id="list-group" class="panel panel-default">
+<div id="list-group" class="panel panel-primary">
 
     <div class="panel-heading">
 
-        <h2>{{ view.title }}</h2>
+        <b>{{ view.title }}</b>
 
-        <span>{{ str(view.date)[:10] }}</span>
+
+
+    </div>
+
+    <div class="panel-body">
+ <span>{{ str(view.date)[:10] }}  </span>
         <span>Author: <a href="http://www.osgeo.cn">OSGeo中国中心</a></span>
 
         <span>Browse: {{ view.view_count }} 次</span>
@@ -20,11 +25,6 @@
             <span class="cmts">
             <a href="/page/modify/{{ view.uid }}">编辑</a></span>
         {% end %}
-
-    </div>
-
-    <div class="panel-body">
-
         <div class="entry">
             <p class="summary"><strong>Abstract</strong>:
                 {% module generate_abstract(view.cnt_html) %}

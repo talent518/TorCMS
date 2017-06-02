@@ -9519,6 +9519,22 @@ input select textarea {
   color: #333333;
 }
 
+/* line 60, ../sass/inc/_tags.sass */
+.infoselect {
+  font-size: 1em;
+}
+/* line 62, ../sass/inc/_tags.sass */
+.infoselect span {
+  font-size: 0.9em;
+  font-weight: normal;
+  display: -moz-inline-box;
+  display: inline-block;
+}
+/* line 67, ../sass/inc/_tags.sass */
+.infoselect span:hover {
+  cursor: pointer;
+}
+
 /* line 2, ../sass/inc/_codemirror.sass */
 .CodeMirror {
   border-top: 1px solid #666;
