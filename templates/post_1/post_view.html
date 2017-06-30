@@ -36,13 +36,14 @@
         <div class="entry">
             <p class="summary"><strong>Abstract</strong>: {% module generate_abstract(postinfo.cnt_html) %} </p>
             <div class="entrycontent">
-                {#
-                {% raw unescape(postinfo.cnt_html) %}
-                #}
+
 
                 {% raw unescape(postinfo.cnt_html) %}
 
             </div>
+        </div>
+        <div class="listinfo_content">
+            {% module reply_panel(postinfo.uid, userinfo) %}
         </div>
 
         <div class="postmeta">
