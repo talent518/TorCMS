@@ -38,7 +38,11 @@
         {{ _('author') }} : {{ _('admin') }}
 
 
-        {% module widget_editor('wiki', postinfo.uid, userinfo) %}
+        {    <span class="cmts"><a href="/wiki/_edit/{{ postinfo.uid  }}" class="btn btn-xs btn-warning">
+    <span class="glyphicon glyphicon-pencil"></span>
+    {{ _('Edit') }}</a></span>
+<span class="cmts"><a href="/wiki_man/view/{{ postinfo.uid  }}"
+                      class="btn btn-xs btn-danger"> {{ _('Review') }}</a></span>
 
         <div id="wiki_cnt" class="listinfo_content">
 
