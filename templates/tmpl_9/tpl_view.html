@@ -153,6 +153,24 @@
 
 </div>
 
+ <script type="text/javascript">
+        function entity_down(uid) {
+            alert('Hello');
+            $.ajax({
+        url: "/entity/down/" + uid,
+        type: "GET",
+        data: {},
+        timeout: 1e3,
+        error: function () {
+            alert("Reload")
+        },
+        success: function (result) {
+            window.open("{{post_info.extinfo['tag_file_download'] if 'tag_file_download' in post_info.extinfo else ''}}");
+        }
+    })
+            }
+    </script>
+
 {% end %}
 
 
